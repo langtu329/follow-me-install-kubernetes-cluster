@@ -145,7 +145,7 @@ $
 ```
 
 ### 创建 kube-apiserver 的 systemd unit 文件
-
+#版本1.9 需要修改--runtime-config=api/all=false,api/v1=true 要关闭除v1之外的所有API版本， experimental-bootstrap-token-auth 替换为 --enable-bootstrap-token-auth 
 ``` bash
 $ cat  > kube-apiserver.service <<EOF
 [Unit]
