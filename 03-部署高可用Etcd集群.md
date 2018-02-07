@@ -15,6 +15,8 @@ kuberntes 系统使用 etcd 存储所有数据，本文档介绍部署一个三�
 本文档用到的变量定义如下：
 
 ``` bash
+
+$ ntpdate pool.ntp.org  #时间同步,每台时间必须同步
 $ export NODE_NAME=etcd-host0 # 当前部署的机器名称(随便定义，只要能区分不同机器即可)
 $ export NODE_IP=10.64.3.7 # 当前部署的机器 IP
 $ export NODE_IPS="10.64.3.7 10.64.3.8 10.66.3.86" # etcd 集群所有机器 IP
