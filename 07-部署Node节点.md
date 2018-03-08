@@ -171,6 +171,7 @@ $ mv bootstrap.kubeconfig /etc/kubernetes/
 ### 创建 kubelet 的 systemd unit 文件
 
 ``` bash
+$cp ~/.kube/config /etc/kubernetes/kubelet.kubeconfig #在master 把kubelet.kubeconfig拷贝到node节点
 $ sudo mkdir /var/lib/kubelet # 必须先创建工作目录
 $ cat > kubelet.service <<EOF
 [Unit]
