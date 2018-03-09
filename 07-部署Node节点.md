@@ -220,6 +220,21 @@ EOF
 完整 unit 见 [kubelet.service](https://github.com/opsnull/follow-me-install-kubernetes-cluster/blob/master/systemd/kubelet.service)
 
 ### 启动 kubelet
+```
+journalctl -f -u kubelet.server
+failed to create kubelet: misconfiguration: kubelet cgroup driver: "cgroupfs" is different from docker cgroup driver: "systemd"
+
+这个是K8S v1.6.x的一个变化, 文件驱动默认由systemd改成cgroupfs, 而我们安装的docker使用的文件驱动是systemd, 造成不一致, 导致镜像无法启动
+ 
+ExecStart=/usr/bin/dockerd  --exec-opt native.cgroupdriver=systemd
+ 
+# 查看docker的文件驱动
+docker info
+
+Logging Driver: json-file
+Cgroup Driver: systemd
+
+```
 
 ``` bash
 $ sudo cp kubelet.service /etc/systemd/system/kubelet.service
